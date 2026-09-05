@@ -1,0 +1,1235 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Noto Sans Arabic', 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-cairo: 'Noto Sans Arabic', 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  *, ::before, ::after {
+    font-family: 'Noto Sans Arabic', 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html, body {
+    font-family: 'Noto Sans Arabic', 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    direction: rtl;
+  }
+  
+  button, input, optgroup, select, textarea {
+    font-family: 'Noto Sans Arabic', 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans Arabic', 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.6);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================
+   DESIGN TOKENS (DARK & LIGHT THEMES)
+   ========================================================== */
+:root {
+  /* Dark Theme Tokens (Original app palette - 100% Preserved) */
+  --token-background: #120424;
+  --token-surface: #18082e;
+  --token-card: #210a40;
+  --token-text-primary: #ffffff;
+  --token-text-secondary: #d8b4fe;
+  --token-text-muted: #c084fc;
+  --token-border: rgba(147, 51, 234, 0.45);
+  --token-primary: #9333ea;
+  --token-secondary: #db2777;
+  --token-accent: #f43f5e;
+  --token-bottom-nav: rgba(26, 7, 51, 0.95);
+  --token-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+html.light-mode,
+body.light-mode,
+[data-theme="light"] {
+  /* Light Theme Tokens (Dedicated, High-Contrast Luxury for Cosmetics) */
+  --token-background: #faf7f9;
+  --token-surface: #ffffff;
+  --token-card: #ffffff;
+  --token-text-primary: #1c1322;
+  --token-text-secondary: #5d4d68;
+  --token-text-muted: #83708f;
+  --token-border: #ebdbe8;
+  --token-border-subtle: #f4e9f2;
+  --token-primary: #9333ea;
+  --token-secondary: #db2777;
+  --token-accent: #e11d48;
+  --token-bottom-nav: rgba(255, 255, 255, 0.98);
+  --token-shadow: 0 4px 20px -2px rgba(180, 110, 160, 0.08), 0 2px 6px -1px rgba(180, 110, 160, 0.04);
+}
+
+html, body {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ==========================================================
+   COMPLETE & DEDICATED LIGHT THEME SYSTEM
+   ========================================================== */
+
+/* 1. Global Page Background & Canvas */
+html.light-mode,
+body.light-mode {
+  color-scheme: light;
+  background-color: var(--token-background) !important;
+  color: var(--token-text-primary) !important;
+}
+
+html.light-mode .min-h-screen.bg-gradient-to-br {
+  background: linear-gradient(135deg, #fdf8fb 0%, #f6ecf4 50%, #fcf7fa 100%) !important;
+  color: var(--token-text-primary) !important;
+}
+
+html.light-mode main {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 10px 40px rgba(180, 110, 160, 0.08) !important;
+}
+
+html.light-mode main.border-\[8px\] {
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 16px 50px rgba(180, 110, 160, 0.12) !important;
+}
+
+/* Device controls on desktop */
+html.light-mode header.hidden.lg\:flex {
+  color: #5d4d68 !important;
+}
+html.light-mode header.hidden.lg\:flex span {
+  color: #5d4d68 !important;
+}
+html.light-mode header.hidden.lg\:flex button {
+  background-color: #ffffff !important;
+  color: #5d4d68 !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 2px 6px rgba(180, 110, 160, 0.06) !important;
+}
+
+/* 2. Top Bar Header */
+html.light-mode header#app-top-header {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid #ebdbe8 !important;
+  box-shadow: 0 2px 14px rgba(180, 110, 160, 0.05) !important;
+}
+
+html.light-mode header#app-top-header h1 {
+  color: #1c1322 !important;
+  font-weight: 800 !important;
+}
+
+html.light-mode header#app-top-header span {
+  color: #5d4d68 !important;
+}
+
+html.light-mode header#app-top-header button#top-back-button {
+  color: #5d4d68 !important;
+}
+html.light-mode header#app-top-header button#top-back-button svg {
+  color: #5d4d68 !important;
+}
+html.light-mode header#app-top-header button#top-back-button:hover {
+  background-color: #fce7f3 !important;
+  color: #db2777 !important;
+}
+
+/* 3. Bottom Navigation */
+html.light-mode nav#main-bottom-navigation {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-top: 1px solid #ebdbe8 !important;
+  box-shadow: 0 -4px 20px rgba(180, 110, 160, 0.08) !important;
+}
+
+html.light-mode nav#main-bottom-navigation button .bg-purple-600 {
+  background-color: #9333ea !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3) !important;
+}
+
+html.light-mode nav#main-bottom-navigation button .text-purple-300 {
+  color: #6b5373 !important;
+}
+
+html.light-mode nav#main-bottom-navigation button:hover .text-purple-300 {
+  color: #7e22ce !important;
+}
+
+html.light-mode nav#main-bottom-navigation button span.text-white {
+  color: #7e22ce !important;
+  font-weight: 800 !important;
+}
+
+html.light-mode nav#main-bottom-navigation button span.text-purple-300 {
+  color: #6b5373 !important;
+  font-weight: 600 !important;
+}
+
+html.light-mode nav#main-bottom-navigation span[id^="nav-badge-"] {
+  background-color: #db2777 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+/* 4. Category Cards & Home Tab */
+html.light-mode #home-header-greeting h1 {
+  color: #1c1322 !important;
+  font-weight: 900 !important;
+}
+
+html.light-mode #home-header-greeting p {
+  color: #be185d !important;
+}
+
+/* Category cards container: Pure white card with preserved border color */
+html.light-mode [id^="card-"][id$="-container"] {
+  background: #ffffff !important;
+  background-image: none !important;
+  box-shadow: 0 4px 16px rgba(180, 110, 160, 0.08) !important;
+  border-color: #ebdbe8 !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"]:hover {
+  box-shadow: 0 10px 28px rgba(180, 110, 160, 0.16) !important;
+  border-color: #db2777 !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] h2 {
+  color: #1c1322 !important;
+  font-weight: 900 !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] p {
+  color: #4a3854 !important;
+  font-weight: 500 !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] .card-icon-box {
+  background: linear-gradient(135deg, #fdf4fa 0%, #f7e6f3 100%) !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: inset 0 1px 3px rgba(180, 110, 160, 0.12) !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] .card-badge {
+  background-color: #fdf2f8 !important;
+  border-color: #f472b6 !important;
+  color: #9d174d !important;
+  font-weight: 800 !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] .shadow-inner {
+  background-color: #fbf4f9 !important;
+  border-color: #ebdbe8 !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] .card-action-divider,
+html.light-mode [id^="card-"][id$="-container"] .border-t {
+  border-top-color: #f0deec !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] .bg-white\/10 {
+  background-color: #f3e6f1 !important;
+  color: #7e22ce !important;
+}
+
+html.light-mode [id^="card-"][id$="-container"] .bg-white\/5 {
+  display: none !important;
+}
+
+/* ==========================================================
+   Category Action Button: «اضغط للتصفح»
+   ========================================================== */
+.btn-browse-action {
+  background: linear-gradient(135deg, #9333ea 0%, #db2777 50%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(147, 51, 234, 0.45) !important;
+}
+
+.btn-browse-action:hover {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f43f5e 100%) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 6px 20px rgba(219, 39, 119, 0.55) !important;
+}
+
+.btn-browse-action span,
+.btn-browse-action svg {
+  color: #ffffff !important;
+  stroke: currentColor !important;
+}
+
+html.light-mode .btn-browse-action {
+  background: linear-gradient(135deg, #86198f 0%, #be185d 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(190, 24, 93, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(190, 24, 93, 0.28) !important;
+}
+
+html.light-mode .btn-browse-action:hover {
+  background: linear-gradient(135deg, #701a75 0%, #9f1239 100%) !important;
+  box-shadow: 0 6px 18px rgba(190, 24, 93, 0.4) !important;
+  border-color: rgba(159, 18, 57, 0.45) !important;
+}
+
+html.light-mode .btn-browse-action span,
+html.light-mode .btn-browse-action svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* 5. Orders Tab & Order Cards */
+html.light-mode div.space-y-3\.5 > div.bg-gradient-to-br,
+html.light-mode [class*="bg-gradient-to-br"][class*="from-\[\#230d43\]"],
+html.light-mode [class*="bg-gradient-to-br"][class*="from-\[\#1f0b3b\]"] {
+  background: #ffffff !important;
+  background-image: none !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 4px 18px rgba(180, 110, 160, 0.06) !important;
+}
+
+html.light-mode div.space-y-3\.5 > div.bg-gradient-to-br:hover,
+html.light-mode [class*="bg-gradient-to-br"][class*="from-\[\#230d43\]"]:hover {
+  border-color: #db2777 !important;
+}
+
+html.light-mode span.font-mono.bg-purple-950\/90 {
+  background-color: #fce7f3 !important;
+  color: #9d174d !important;
+  border-color: #fbcfe8 !important;
+  font-weight: 800 !important;
+}
+
+html.light-mode .border-b.border-purple-800\/50 {
+  border-color: #f0deec !important;
+}
+
+html.light-mode p.bg-\[\#16052b\] {
+  background-color: #fcf7fa !important;
+  border-color: #f0deec !important;
+  color: #4e3c58 !important;
+}
+
+html.light-mode div.bg-\[\#17052e\] {
+  background-color: #faf3f8 !important;
+  border-color: #ebdbe8 !important;
+}
+
+html.light-mode div.bg-\[\#17052e\] span.text-purple-400 {
+  color: #6b5575 !important;
+  font-weight: 700 !important;
+}
+
+html.light-mode div.bg-\[\#17052e\] span.text-white {
+  color: #1c1322 !important;
+  font-weight: 900 !important;
+}
+
+html.light-mode div.bg-\[\#17052e\] span.text-pink-300 {
+  color: #be185d !important;
+  font-weight: 900 !important;
+}
+
+html.light-mode div.bg-\[\#17052e\] span.text-emerald-400 {
+  color: #047857 !important;
+  font-weight: 900 !important;
+}
+
+html.light-mode .border-x.border-purple-800\/50 {
+  border-color: #ebdbe8 !important;
+}
+
+/* Order Status Badges in Light Mode */
+/* 🟡 Pending / قيد المراجعة */
+html.light-mode [class*="bg-yellow-500/20"],
+html.light-mode [class*="border-yellow-500/40"] {
+  background-color: #fef9c3 !important;
+  color: #854d0e !important;
+  border-color: #facc15 !important;
+  font-weight: 800 !important;
+}
+
+/* 🔵 Confirmed / تم التأكيد */
+html.light-mode [class*="bg-blue-500/20"],
+html.light-mode [class*="border-blue-500/40"] {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+  border-color: #60a5fa !important;
+  font-weight: 800 !important;
+}
+
+/* 🟠 Preparing / تم التجهيز */
+html.light-mode [class*="bg-amber-500/20"],
+html.light-mode [class*="border-amber-500/40"] {
+  background-color: #ffedd5 !important;
+  color: #9a3412 !important;
+  border-color: #fb923c !important;
+  font-weight: 800 !important;
+}
+
+/* 🟢 Delivered / تم التسليم */
+html.light-mode [class*="bg-emerald-500/20"],
+html.light-mode [class*="border-emerald-500/40"] {
+  background-color: #dcfce7 !important;
+  color: #166534 !important;
+  border-color: #4ade80 !important;
+  font-weight: 800 !important;
+}
+
+/* 🔴 Rejected / مرفوض */
+html.light-mode [class*="bg-rose-500/20"],
+html.light-mode [class*="border-rose-500/40"] {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+  border-color: #f87171 !important;
+  font-weight: 800 !important;
+}
+
+/* 6. Settings Tab (ProfileTab.tsx) */
+html.light-mode #settings-tab-content section,
+html.light-mode #settings-account-section,
+html.light-mode #settings-admin-section,
+html.light-mode #settings-theme-section,
+html.light-mode #settings-notifications-section,
+html.light-mode #settings-about-section,
+html.light-mode #settings-privacy-section {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 3px 14px rgba(180, 110, 160, 0.05) !important;
+}
+
+html.light-mode #settings-account-section div.bg-purple-950\/70 {
+  background-color: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
+  color: #db2777 !important;
+}
+
+html.light-mode #settings-account-section button#open-account-details-btn {
+  background-color: #fbf4f9 !important;
+  border-color: #e4cde0 !important;
+  color: #7e22ce !important;
+}
+
+html.light-mode #settings-account-section button#open-account-details-btn:hover {
+  background-color: #f3e6f1 !important;
+  color: #6b21a8 !important;
+}
+
+html.light-mode #settings-account-section div.bg-\[\#180730\] {
+  background-color: #fbf4f9 !important;
+  border-color: #ebdbe8 !important;
+}
+html.light-mode #settings-account-section div.bg-\[\#180730\] span {
+  color: #3b1d42 !important;
+  font-weight: 600 !important;
+}
+
+/* Theme selector cards in Settings */
+html.light-mode button#theme-dark-btn {
+  background-color: #fbf4f9 !important;
+  border-color: #ebdbe8 !important;
+  color: #3b1d42 !important;
+  box-shadow: none !important;
+}
+html.light-mode button#theme-dark-btn:hover {
+  background-color: #f5e6f2 !important;
+}
+html.light-mode button#theme-dark-btn div.bg-\[\#120424\] {
+  background-color: #eedfee !important;
+  border-color: #d8c3d8 !important;
+  color: #7e22ce !important;
+}
+html.light-mode button#theme-dark-btn span.text-\[10px\] {
+  color: #6b5373 !important;
+}
+html.light-mode button#theme-dark-btn span {
+  color: #1c1322 !important;
+}
+
+html.light-mode button#theme-light-btn {
+  background-color: #ffffff !important;
+  border: 2px solid #db2777 !important;
+  box-shadow: 0 0 0 3px rgba(219, 39, 119, 0.18) !important;
+  color: #831843 !important;
+}
+html.light-mode button#theme-light-btn div.bg-amber-500\/20 {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+  color: #d97706 !important;
+}
+html.light-mode button#theme-light-btn span.text-\[10px\] {
+  color: #9d174d !important;
+}
+html.light-mode button#theme-light-btn span {
+  color: #831843 !important;
+}
+
+/* Notifications switch in Settings */
+html.light-mode button#toggle-notifications-switch.bg-purple-950\/80 {
+  background-color: #e2d3e0 !important;
+  border: 1px solid #cbbed0 !important;
+}
+
+/* About App strip in Settings */
+html.light-mode #settings-about-section div.bg-\[\#180730\] {
+  background-color: #fbf4f9 !important;
+  border-color: #ebdbe8 !important;
+}
+html.light-mode #settings-about-section div.bg-\[\#180730\] h4 {
+  color: #db2777 !important;
+}
+html.light-mode #settings-about-section div.bg-\[\#180730\] p {
+  color: #3b1d42 !important;
+}
+html.light-mode #settings-about-section span.bg-purple-900\/60 {
+  background-color: #f3e8ff !important;
+  border-color: #e9d5ff !important;
+  color: #7e22ce !important;
+}
+
+/* Logout button */
+html.light-mode button#logout-button-main {
+  background-color: #fff1f2 !important;
+  border-color: #fecdd3 !important;
+  color: #be123c !important;
+  box-shadow: 0 2px 8px rgba(190, 18, 60, 0.08) !important;
+}
+html.light-mode button#logout-button-main:hover {
+  background-color: #ffe4e6 !important;
+  color: #9f1239 !important;
+}
+
+/* 7. Projects Tab (ProjectsTab.tsx) */
+html.light-mode #projects-tab-content > div.bg-\[\#230d43\] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 3px 12px rgba(180, 110, 160, 0.05) !important;
+}
+
+html.light-mode #projects-tab-content div.w-10.h-10.bg-purple-600\/30 {
+  background-color: #f3e8ff !important;
+  border-color: #e9d5ff !important;
+  color: #7e22ce !important;
+}
+
+html.light-mode #saved-videos-empty-state {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 4px 16px rgba(180, 110, 160, 0.06) !important;
+}
+html.light-mode #saved-videos-empty-state div.bg-purple-900\/70 {
+  background-color: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
+  color: #db2777 !important;
+}
+
+html.light-mode #projects-tab-content div.cursor-pointer.bg-\[\#230d43\] {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 3px 12px rgba(180, 110, 160, 0.05) !important;
+}
+html.light-mode #projects-tab-content div.cursor-pointer.bg-\[\#230d43\]:hover {
+  border-color: #db2777 !important;
+}
+
+/* 8. Videos & Formulation Details (DetergentProjectDetails.tsx) */
+html.light-mode [id^="video-card-"] {
+  background: #ffffff !important;
+  background-image: none !important;
+  box-shadow: 0 4px 18px rgba(180, 110, 160, 0.06) !important;
+}
+
+html.light-mode [id^="btn-instructions-video-"] {
+  background-color: #fbf4f9 !important;
+  border-color: #e2cfe0 !important;
+  color: #6b21a8 !important;
+}
+html.light-mode [id^="btn-instructions-video-"]:hover {
+  background-color: #f5e6f2 !important;
+  border-color: #d8bad4 !important;
+}
+
+/* 9. Universal Card & Surface Resets in Light Mode */
+html.light-mode .bg-\[\#240d47\],
+html.light-mode .bg-\[\#230d43\],
+html.light-mode .bg-\[\#220c42\],
+html.light-mode .bg-\[\#210c40\],
+html.light-mode .bg-\[\#210a40\],
+html.light-mode .bg-\[\#220d3f\],
+html.light-mode .bg-\[\#180730\],
+html.light-mode .bg-\[\#1a0733\],
+html.light-mode .bg-\[\#18062e\],
+html.light-mode .bg-\[\#140526\],
+html.light-mode .bg-\[\#140426\],
+html.light-mode .bg-\[\#140424\],
+html.light-mode .bg-\[\#120422\],
+html.light-mode .bg-\[\#120322\],
+html.light-mode .bg-\[\#1b0733\],
+html.light-mode .bg-\[\#200a3e\],
+html.light-mode .bg-\[\#16062a\],
+html.light-mode .bg-\[\#1d0a36\],
+html.light-mode .bg-\[\#18082e\],
+html.light-mode .bg-\[\#1c0836\],
+html.light-mode .bg-\[\#1e0a38\],
+html.light-mode .bg-\[\#260e49\],
+html.light-mode .bg-\[\#16062c\] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #ebdbe8 !important;
+}
+
+/* Inset containers / subpanels / table strips / inner blocks */
+html.light-mode .bg-\[\#16052b\],
+html.light-mode .bg-\[\#17052e\],
+html.light-mode .bg-\[\#180730\],
+html.light-mode .bg-\[\#140626\],
+html.light-mode .bg-\[\#16052c\],
+html.light-mode .bg-\[\#170529\],
+html.light-mode .bg-\[\#17062e\],
+html.light-mode .bg-\[\#120424\],
+html.light-mode .bg-\[\#1f093a\],
+html.light-mode .bg-\[\#150628\],
+html.light-mode .bg-\[\#140626\]\/50,
+html.light-mode .bg-\[\#150628\]\/80,
+html.light-mode .bg-\[\#1a0832\]\/60 {
+  background-color: #faf4f8 !important;
+  border-color: #ebdbe8 !important;
+}
+
+/* Hover transitions on cards and rows in light mode */
+html.light-mode .hover\:bg-\[\#31135d\]:hover,
+html.light-mode .hover\:bg-\[\#2a1050\]:hover,
+html.light-mode .hover\:bg-\[\#200c3b\]:hover,
+html.light-mode .hover\:bg-\[\#1f093a\]:hover {
+  background-color: #f4e8f4 !important;
+  border-color: #dfc8de !important;
+}
+
+/* Purple and dark opacity chips / badges */
+html.light-mode .bg-purple-900\/60,
+html.light-mode .bg-purple-900\/50,
+html.light-mode .bg-purple-900\/40,
+html.light-mode .bg-purple-900\/30,
+html.light-mode .bg-purple-950\/80,
+html.light-mode .bg-purple-950\/70,
+html.light-mode .bg-purple-950\/60,
+html.light-mode .bg-purple-950\/50,
+html.light-mode .bg-purple-950\/40 {
+  background-color: #f5edf7 !important;
+  border-color: #ebdbe8 !important;
+  color: #4a2757 !important;
+}
+
+/* Secondary / Tertiary buttons with purple opacity in light mode */
+html.light-mode button.bg-purple-900\/60,
+html.light-mode button.bg-purple-900\/50,
+html.light-mode button.bg-purple-900\/40,
+html.light-mode button.bg-purple-950\/80,
+html.light-mode button.bg-purple-950\/60 {
+  background-color: #f3e8f6 !important;
+  border-color: #d8c2d8 !important;
+  color: #4a2757 !important;
+}
+
+html.light-mode button.bg-purple-900\/60:hover,
+html.light-mode button.bg-purple-900\/50:hover,
+html.light-mode button.bg-purple-900\/40:hover,
+html.light-mode button.bg-purple-950\/80:hover,
+html.light-mode button.bg-purple-950\/60:hover {
+  background-color: #ebdbee !important;
+  color: #2e1136 !important;
+}
+
+/* Rose / Amber alerts and badges in Light mode */
+html.light-mode .bg-rose-950\/70,
+html.light-mode .bg-rose-950\/60,
+html.light-mode .bg-rose-950\/50,
+html.light-mode .bg-rose-950\/40 {
+  background-color: #fff1f2 !important;
+  border-color: #fecdd3 !important;
+  color: #9f1239 !important;
+}
+
+html.light-mode .bg-\[\#1f093d\] {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+}
+
+html.light-mode .bg-\[\#1f093d\] p.text-amber-300 {
+  color: #92400e !important;
+}
+
+html.light-mode .bg-\[\#1f093d\] p.text-purple-200 {
+  color: #78350f !important;
+}
+
+/* YouTube Player modal overrides */
+html.light-mode #btn-video-fullscreen-below {
+  background: linear-gradient(90deg, #f5edf7 0%, #ece0ee 50%, #f5edf7 100%) !important;
+  color: #4a1d63 !important;
+  border-color: #d6bcdc !important;
+  box-shadow: 0 4px 12px rgba(180, 110, 160, 0.15) !important;
+}
+html.light-mode #btn-video-fullscreen-below:hover {
+  background: linear-gradient(90deg, #efe2f2 0%, #e5d4e8 50%, #efe2f2 100%) !important;
+  color: #2f0e42 !important;
+  border-color: #c49ecf !important;
+}
+html.light-mode #btn-video-fullscreen-below svg {
+  color: #7e22ce !important;
+}
+html.light-mode #modal-video-description-box {
+  background-color: #faf4f8 !important;
+  border-color: #ebdbe8 !important;
+}
+
+/* Top bar & Admin bar in light mode */
+html.light-mode #app-top-header,
+html.light-mode .bg-\[\#1e0a38\]\/95,
+html.light-mode .bg-\[\#1c0836\]\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom-color: #ebdbe8 !important;
+  box-shadow: 0 4px 20px rgba(180, 110, 160, 0.12) !important;
+}
+
+/* Category Hero Banner in DetergentProjectDetails */
+html.light-mode div.bg-gradient-to-br.from-\[\#2b0f52\] {
+  background: linear-gradient(135deg, #ffffff 0%, #faf3f8 100%) !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 10px 30px rgba(180, 110, 160, 0.12) !important;
+}
+
+/* Auth card gradient in AuthScreen */
+html.light-mode div.bg-gradient-to-b.from-\[\#210a40\] {
+  background: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 20px 45px rgba(180, 110, 160, 0.18) !important;
+}
+
+/* 10. Form Inputs in Light Mode */
+html.light-mode input:not([type="checkbox"]):not([type="radio"]),
+html.light-mode select,
+html.light-mode textarea {
+  background-color: #fcf7fa !important;
+  color: #1c1322 !important;
+  border-color: #e2cee0 !important;
+}
+
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder {
+  color: #9c89a6 !important;
+}
+
+html.light-mode input:focus,
+html.light-mode select:focus,
+html.light-mode textarea:focus {
+  border-color: #a855f7 !important;
+  background-color: #ffffff !important;
+}
+
+/* 11. Modals & Dialogs in Light Mode */
+html.light-mode #account-details-modal > div,
+html.light-mode #about-app-modal > div,
+html.light-mode #privacy-terms-modal > div,
+html.light-mode #logout-confirm-modal > div {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid #ebdbe8 !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light-mode #account-details-modal div.bg-\[\#180730\],
+html.light-mode #about-app-modal div.bg-\[\#180730\],
+html.light-mode #privacy-terms-modal div.bg-\[\#180730\] {
+  background-color: #fbf4f9 !important;
+  border-color: #ebdbe8 !important;
+}
+
+html.light-mode #account-details-modal p,
+html.light-mode #about-app-modal p,
+html.light-mode #privacy-terms-modal p {
+  color: #3b1d42 !important;
+}
+
+html.light-mode #account-details-modal span.text-purple-400,
+html.light-mode #about-app-modal span.text-purple-400,
+html.light-mode #privacy-terms-modal span.text-purple-400 {
+  color: #7e22ce !important;
+  font-weight: 700 !important;
+}
+
+/* 12. Text & Typography Hierarchy in Light Mode */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode h5,
+html.light-mode h6 {
+  color: #1c1322 !important;
+}
+
+html.light-mode .text-white:not(button.bg-purple-600 *):not(button.bg-pink-600 *):not(button.bg-rose-600 *):not(button.bg-emerald-600 *):not([class*="bg-gradient-to-r"] *):not(.bg-purple-600):not(.bg-pink-600):not(.bg-emerald-600):not(.btn-browse-action):not(.btn-browse-action *) {
+  color: #1c1322 !important;
+}
+
+html.light-mode .text-purple-50,
+html.light-mode .text-purple-100 {
+  color: #26082c !important;
+}
+
+html.light-mode .text-purple-200 {
+  color: #3b2746 !important;
+}
+
+html.light-mode .text-purple-300 {
+  color: #4a3357 !important;
+}
+
+html.light-mode .text-purple-400 {
+  color: #603d72 !important;
+}
+
+html.light-mode .text-pink-200 {
+  color: #9d174d !important;
+}
+
+html.light-mode .text-pink-300 {
+  color: #831843 !important;
+}
+
+html.light-mode .text-blue-200,
+html.light-mode .text-blue-300 {
+  color: #1d4ed8 !important;
+}
+
+html.light-mode .text-blue-400 {
+  color: #1e40af !important;
+}
+
+/* Borders in Light Mode */
+html.light-mode .border-purple-700\/60,
+html.light-mode .border-purple-800\/60,
+html.light-mode .border-purple-800\/50,
+html.light-mode .border-purple-800\/40,
+html.light-mode .border-purple-900\/60,
+html.light-mode .border-purple-700\/50,
+html.light-mode .border-purple-800\/70,
+html.light-mode .border-purple-900\/70,
+html.light-mode .border-purple-900\/80 {
+  border-color: #ebdbe8 !important;
+}
+
+/* Primary Action Buttons: Crisp White Text Guaranteed */
+html.light-mode button[class*="bg-gradient-"],
+html.light-mode a[class*="bg-gradient-"],
+html.light-mode .btn-browse-action,
+html.light-mode .btn-video-order-now,
+html.light-mode .btn-confirm-delete,
+html.light-mode .btn-save-video,
+html.light-mode .btn-submit,
+html.light-mode button.bg-purple-600,
+html.light-mode button.bg-purple-500,
+html.light-mode button.bg-pink-600,
+html.light-mode button.bg-pink-500,
+html.light-mode button.bg-rose-600,
+html.light-mode button.bg-emerald-600,
+html.light-mode button.bg-teal-600,
+html.light-mode button.bg-blue-600,
+html.light-mode button.bg-indigo-600,
+html.light-mode button.bg-fuchsia-600,
+html.light-mode span.bg-pink-600,
+html.light-mode span.bg-rose-600,
+html.light-mode span.bg-purple-600,
+html.light-mode span.bg-emerald-600,
+html.light-mode div.bg-pink-600,
+html.light-mode div.bg-purple-600 {
+  color: #ffffff !important;
+}
+
+html.light-mode button[class*="bg-gradient-"] *,
+html.light-mode a[class*="bg-gradient-"] *,
+html.light-mode .btn-browse-action *,
+html.light-mode .btn-video-order-now *,
+html.light-mode .btn-confirm-delete *,
+html.light-mode .btn-save-video *,
+html.light-mode .btn-submit *,
+html.light-mode button.bg-purple-600 *,
+html.light-mode button.bg-purple-500 *,
+html.light-mode button.bg-pink-600 *,
+html.light-mode button.bg-pink-500 *,
+html.light-mode button.bg-rose-600 *,
+html.light-mode button.bg-emerald-600 *,
+html.light-mode button.bg-teal-600 *,
+html.light-mode button.bg-blue-600 *,
+html.light-mode button.bg-indigo-600 *,
+html.light-mode button.bg-fuchsia-600 *,
+html.light-mode span.bg-pink-600 *,
+html.light-mode span.bg-rose-600 *,
+html.light-mode span.bg-purple-600 *,
+html.light-mode span.bg-emerald-600 *,
+html.light-mode div.bg-pink-600 *,
+html.light-mode div.bg-purple-600 * {
+  color: #ffffff !important;
+}
+
+/* 14. Notifications Modal in Light Mode */
+html.light-mode #notifications-modal-container {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 20px 50px rgba(180, 110, 160, 0.25) !important;
+}
+
+html.light-mode #notifications-modal-container > div:first-child {
+  background-color: #faf4f8 !important;
+  border-bottom-color: #ebdbe8 !important;
+}
+
+html.light-mode #notifications-modal-container [id^="notification-card-"] {
+  background-color: #fdfafc !important;
+  border-color: #f0e2ed !important;
+}
+
+html.light-mode #notifications-modal-container [id^="notification-card-"]:hover {
+  background-color: #fbf0f7 !important;
+  border-color: #e2c0da !important;
+}
+
+html.light-mode #notifications-modal-container div:last-child {
+  background-color: #faf4f8 !important;
+  border-top-color: #ebdbe8 !important;
+}
+
+/* ==========================================================
+   Splash Screen Light Mode Styling
+   ========================================================== */
+html.light-mode #splash-screen-container {
+  background: linear-gradient(180deg, #fff7fa 0%, #fdf2f8 50%, #fce7f3 100%) !important;
+  color: #1f102c !important;
+}
+
+html.light-mode #splash-screen-container .splash-title {
+  color: #1f102c !important;
+}
+
+html.light-mode #splash-screen-container .splash-subtitle {
+  color: #9d174d !important;
+}
+
+html.light-mode #splash-screen-container .splash-pill {
+  background-color: #ffffff !important;
+  border-color: #f472b6 !important;
+  color: #701a75 !important;
+  box-shadow: 0 2px 6px rgba(244, 114, 182, 0.15) !important;
+}
+
+html.light-mode #splash-screen-container #splash-skip-button {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid #f9a8d4 !important;
+  color: #831843 !important;
+}
+
+html.light-mode #splash-screen-container #splash-enter-main-app {
+  background: linear-gradient(135deg, #db2777 0%, #9333ea 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 10px 25px -5px rgba(219, 39, 119, 0.4) !important;
+}
+
+html.light-mode #splash-screen-container #splash-enter-main-app * {
+  color: #ffffff !important;
+}
+
+html.light-mode #splash-screen-container .splash-top-badge {
+  background-color: #ffffff !important;
+  border-color: #f472b6 !important;
+  color: #831843 !important;
+}
+
+html.light-mode #splash-screen-container .splash-progress-track {
+  background-color: #fce7f3 !important;
+  border-color: #f472b6 !important;
+}
+
+/* ==========================================================
+   Order Cancellation System - Light Mode High Contrast Styles
+   ========================================================== */
+html.light-mode #orders-tab-content #orders-empty-state {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 4px 20px -2px rgba(180, 110, 160, 0.08) !important;
+}
+
+html.light-mode #orders-tab-content #orders-empty-state div.w-16 {
+  background-color: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
+  color: #db2777 !important;
+}
+
+html.light-mode #orders-tab-content #orders-empty-state h2 {
+  color: #1c1322 !important;
+}
+
+html.light-mode #orders-tab-content #orders-empty-state p {
+  color: #6d5877 !important;
+}
+
+html.light-mode #order-cancel-toast {
+  background-color: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #065f46 !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15) !important;
+}
+
+html.light-mode #order-cancel-toast span {
+  color: #065f46 !important;
+}
+
+html.light-mode .order-card-container {
+  background: #ffffff !important;
+  background-image: none !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 4px 20px -2px rgba(180, 110, 160, 0.08) !important;
+}
+
+html.light-mode .order-card-container:hover {
+  border-color: #db2777 !important;
+}
+
+html.light-mode .order-number-badge {
+  background-color: #fce7f3 !important;
+  color: #9d174d !important;
+  border-color: #fbcfe8 !important;
+  font-weight: 800 !important;
+}
+
+html.light-mode .order-title {
+  color: #1c1322 !important;
+}
+
+html.light-mode .order-description-box {
+  background-color: #fbf4f9 !important;
+  border-color: #ebdbe8 !important;
+  color: #4a3357 !important;
+}
+
+html.light-mode .order-price-grid {
+  background-color: #faf3f8 !important;
+  border-color: #ebdbe8 !important;
+}
+
+html.light-mode .btn-cancel-order {
+  background-color: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+  color: #991b1b !important;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.12) !important;
+}
+
+html.light-mode .btn-cancel-order:hover {
+  background-color: #fecaca !important;
+  color: #7f1d1d !important;
+  border-color: #f87171 !important;
+}
+
+html.light-mode .order-cancel-modal-container {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.light-mode .order-cancel-modal-container h3 {
+  color: #1c1322 !important;
+}
+
+html.light-mode .order-cancel-modal-container p {
+  color: #6b5575 !important;
+}
+
+html.light-mode .btn-modal-back {
+  background-color: #f5edf7 !important;
+  border-color: #e3d2e6 !important;
+  color: #581c87 !important;
+}
+
+html.light-mode .btn-modal-back:hover {
+  background-color: #ede0ef !important;
+  color: #3b0764 !important;
+}
+
+/* Admin Status Action Buttons in Light Mode */
+html.light-mode .admin-btn-inactive-pending {
+  background-color: #fefce8 !important;
+  color: #854d0e !important;
+  border-color: #fef08a !important;
+}
+html.light-mode .admin-btn-inactive-pending:hover {
+  background-color: #fef9c3 !important;
+  border-color: #facc15 !important;
+}
+
+html.light-mode .admin-btn-inactive-confirmed {
+  background-color: #eff6ff !important;
+  color: #1e40af !important;
+  border-color: #bfdbfe !important;
+}
+html.light-mode .admin-btn-inactive-confirmed:hover {
+  background-color: #dbeafe !important;
+  border-color: #93c5fd !important;
+}
+
+html.light-mode .admin-btn-inactive-preparing {
+  background-color: #fff7ed !important;
+  color: #9a3412 !important;
+  border-color: #fed7aa !important;
+}
+html.light-mode .admin-btn-inactive-preparing:hover {
+  background-color: #ffedd5 !important;
+  border-color: #fdba74 !important;
+}
+
+html.light-mode .admin-btn-inactive-delivered {
+  background-color: #f0fdf4 !important;
+  color: #166534 !important;
+  border-color: #bbf7d0 !important;
+}
+html.light-mode .admin-btn-inactive-delivered:hover {
+  background-color: #dcfce7 !important;
+  border-color: #86efac !important;
+}
+
+html.light-mode .admin-btn-inactive-rejected {
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+  border-color: #fecaca !important;
+}
+html.light-mode .admin-btn-inactive-rejected:hover {
+  background-color: #fee2e2 !important;
+  border-color: #fca5a5 !important;
+}
+
+/* ==========================================================
+   Order Deletion & Notification Clear - Light Mode Precision
+   ========================================================== */
+
+/* 1. Delete Order Buttons (Customer & Admin) */
+html.light-mode .btn-delete-order,
+html.light-mode [id^="btn-delete-order-"],
+html.light-mode [id^="btn-admin-delete-order-"] {
+  background-color: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #b91c1c !important;
+  box-shadow: 0 1px 4px rgba(220, 38, 38, 0.08) !important;
+}
+
+html.light-mode .btn-delete-order:hover,
+html.light-mode [id^="btn-delete-order-"]:hover,
+html.light-mode [id^="btn-admin-delete-order-"]:hover {
+  background-color: #fee2e2 !important;
+  border-color: #f87171 !important;
+  color: #991b1b !important;
+}
+
+/* 2. Order Deletion Modals (Customer & Admin) */
+html.light-mode #order-delete-confirm-modal #order-delete-modal-content,
+html.light-mode #admin-order-delete-confirm-modal #admin-order-delete-modal-content {
+  background-color: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.light-mode #order-delete-confirm-modal h3,
+html.light-mode #admin-order-delete-confirm-modal h3 {
+  color: #1c1322 !important;
+}
+
+html.light-mode #order-delete-confirm-modal p,
+html.light-mode #admin-order-delete-confirm-modal p {
+  color: #5d4d68 !important;
+}
+
+html.light-mode #order-delete-confirm-modal p.bg-\[\#17052e\],
+html.light-mode #admin-order-delete-confirm-modal p.bg-\[\#17052e\] {
+  background-color: #fdf2f4 !important;
+  border-color: #fecdd3 !important;
+  color: #9f1239 !important;
+}
+
+/* 3. Notifications Clear Button & Confirmation Banner */
+html.light-mode #notifications-clear-all-btn {
+  background-color: #fef2f2 !important;
+  border-color: #fecaca !important;
+  color: #b91c1c !important;
+}
+
+html.light-mode #notifications-clear-all-btn:hover {
+  background-color: #fee2e2 !important;
+  border-color: #f87171 !important;
+  color: #991b1b !important;
+}
+
+html.light-mode #notifications-modal-container div.bg-rose-950\/90 {
+  background-color: #fff1f2 !important;
+  border-bottom-color: #fecdd3 !important;
+}
+
+html.light-mode #notifications-modal-container div.bg-rose-950\/90 span {
+  color: #9f1239 !important;
+}
+
+html.light-mode #btn-cancel-clear-notifications {
+  background-color: #f5edf7 !important;
+  border-color: #e3d2e6 !important;
+  color: #581c87 !important;
+}
+
+/* 4. Admin Orders View in Light Mode */
+html.light-mode div.bg-gradient-to-br.from-\[\#230d43\] {
+  background: #ffffff !important;
+  border-color: #ebdbe8 !important;
+  box-shadow: 0 4px 20px -2px rgba(180, 110, 160, 0.08) !important;
+}
+
+html.light-mode div.bg-gradient-to-br.from-\[\#230d43\] div.bg-\[\#120322\] {
+  background-color: #fcf8fa !important;
+  border-color: #ebdbe8 !important;
+}
+
+html.light-mode div.bg-gradient-to-br.from-\[\#230d43\] span.text-purple-200,
+html.light-mode div.bg-gradient-to-br.from-\[\#230d43\] span.text-purple-300,
+html.light-mode div.bg-gradient-to-br.from-\[\#230d43\] div.text-purple-200,
+html.light-mode div.bg-gradient-to-br.from-\[\#230d43\] div.text-purple-300 {
+  color: #4a3357 !important;
+}
+
+
+
+

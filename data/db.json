@@ -1,0 +1,204 @@
+{
+  "users": [
+    {
+      "id": "admin-dedlek456",
+      "name": "الأدمن الرئيسي",
+      "email": "dedlek456@gmail.com",
+      "passwordHash": "$2b$10$1Xj/EoXimb/9IibSCM0BMuYbRtgditaEBJIc364kspgvq6u4bwWDq",
+      "role": "admin",
+      "createdAt": "2026-08-31T11:44:05.414Z"
+    },
+    {
+      "id": "usr-1788191012474-6sj944",
+      "name": "Amr",
+      "email": "oiolek456@gmail.com",
+      "passwordHash": "$2b$10$L9yZRG/7VswSOYA.8Iz2lOIPoTDCHsVEBM6jd1sMiV1kUBm5odzHi",
+      "role": "user",
+      "createdAt": "2026-08-31T15:43:32.602Z"
+    },
+    {
+      "id": "usr-1788192293228-i6hq07",
+      "name": "مستخدم تجريبي",
+      "email": "testuser1788192292808@example.com",
+      "passwordHash": "$2b$10$z7OzVh4IXzn2OnScOLsjMelC9lCv55a1f1fWTcRe.RBI26C4lY4W.",
+      "role": "user",
+      "createdAt": "2026-08-31T16:04:53.375Z"
+    },
+    {
+      "id": "usr-1788192679543-w1lkin",
+      "name": "Ded",
+      "email": "hgfhhjm@gmail.com",
+      "passwordHash": "$2b$10$MZpayzbN8lU8ZdI41VlrY.walTcnA2j1lPEscWR6DGR/N2kSRvf6O",
+      "role": "user",
+      "createdAt": "2026-08-31T16:11:19.675Z"
+    },
+    {
+      "id": "usr-1788193287334-z52yds",
+      "name": "User 1",
+      "email": "u_1788193287027@example.com",
+      "passwordHash": "$2b$10$jOeasR/nEYMweNm9UCo5aOb2J9srGoWCW8.Ja9DxbgwW97D76yiBm",
+      "role": "user",
+      "createdAt": "2026-08-31T16:21:27.460Z"
+    },
+    {
+      "id": "usr-1788193724098-q6ho3v",
+      "name": "مستخدم عادي",
+      "email": "client_1788193723789@test.com",
+      "passwordHash": "$2b$10$ko0r2ptExPkelc8GU588U.vCuNaImWCsElukdBv8HiFgQ38a1.tyS",
+      "role": "user",
+      "createdAt": "2026-08-31T16:28:44.217Z"
+    },
+    {
+      "id": "usr-1788194461053-2pl9rb",
+      "name": "User Test",
+      "email": "user_1788194460615@domain.com",
+      "passwordHash": "$2b$10$4JFwI36FmViH2gQ4xYaN1.mtzIGuBV.aREIn6/lur2tW474gy9zm2",
+      "role": "user",
+      "createdAt": "2026-08-31T16:41:01.177Z"
+    },
+    {
+      "id": "usr-1788194756480-358bo2",
+      "name": "Dadg",
+      "email": "gfdgjh@gmail.com",
+      "passwordHash": "$2b$10$6N0xJVw/Q2s6bctFYe2UPu5dQFRgTkyjFlVbK2E7ukN3psvpSrYV6",
+      "role": "user",
+      "createdAt": "2026-08-31T16:45:56.642Z"
+    },
+    {
+      "id": "usr-1788194994730-d2v4qh",
+      "name": "عميل تجريبي",
+      "email": "test_user_1788194994409@client.com",
+      "passwordHash": "$2b$10$LLs/wMvW70YRvO.M1oZ4UOjZjX4mafb05FQxfMvsNEd9p8gpCc2cy",
+      "role": "user",
+      "createdAt": "2026-08-31T16:49:54.852Z"
+    },
+    {
+      "id": "usr-1788195042863-ceovty",
+      "name": "مستخدم",
+      "email": "user_1788195042557@mail.com",
+      "passwordHash": "$2b$10$ptepRQVwXvKnQ7pTxu.QL.RwP9rUDhPqz8lFFcIiiOLRHfH4CVkvW",
+      "role": "user",
+      "createdAt": "2026-08-31T16:50:42.979Z"
+    },
+    {
+      "id": "usr-1788195054768-ny1c01",
+      "name": "مستخدم",
+      "email": "user_1788195054359@mail.com",
+      "passwordHash": "$2b$10$LJeWQOYR0YuBj/fKFlkctOFlEO6dImL33F/E.nSQ5kj.AYUkQsyqq",
+      "role": "user",
+      "createdAt": "2026-08-31T16:50:54.878Z"
+    },
+    {
+      "id": "usr-1788195069946-z8397k",
+      "name": "عميل",
+      "email": "client_1788195069630@test.com",
+      "passwordHash": "$2b$10$8GvkSkMlzE5NNRc1sCyacOuCtdeCjj.UVaO6ixIn23ipJJjC5Tg/u",
+      "role": "user",
+      "createdAt": "2026-08-31T16:51:10.115Z"
+    },
+    {
+      "id": "usr-1788195425530-ohnmis",
+      "name": "العميل أحمد",
+      "email": "client_1788195425207@domain.com",
+      "passwordHash": "$2b$10$5DbWMshPMfvRiJkOrGrcSOyyU8WGLcDwQxQPL7x55hNG7n3IxDjH6",
+      "role": "user",
+      "createdAt": "2026-08-31T16:57:05.655Z"
+    },
+    {
+      "id": "usr-1788195729302-0ztqkp",
+      "name": "العميل",
+      "email": "client_1788195728995@domain.com",
+      "passwordHash": "$2b$10$QFtOOsjysVfECiutx.mrouQXaki.cTMYewxi8fnHtINdO6nkn28vW",
+      "role": "user",
+      "createdAt": "2026-08-31T17:02:09.438Z"
+    },
+    {
+      "id": "usr-1788195738773-s2kni9",
+      "name": "العميل",
+      "email": "client_1788195738463@domain.com",
+      "passwordHash": "$2b$10$QUcFZsG7GQx1jGnpjMN6qOI93/UKYjE3KDeaQ8DpcERrPtkGP7dGy",
+      "role": "user",
+      "createdAt": "2026-08-31T17:02:18.890Z"
+    },
+    {
+      "id": "usr-1788196128790-ljukaj",
+      "name": "فاطمه",
+      "email": "fhdhhbfg@gmail.com",
+      "passwordHash": "$2b$10$pVe6IWEIwAzfr/LWqlsvHebftRJ.XpznosblRJ0JBiCQbJqgHL1rq",
+      "role": "user",
+      "createdAt": "2026-08-31T17:08:48.907Z"
+    },
+    {
+      "id": "usr-1788203492360-18ktsv",
+      "name": "العميل العادي",
+      "email": "client_1788203492053@domain.com",
+      "passwordHash": "$2b$10$fWveEUMknDVw05FRgHR8EeK046AYkP1UKBzA8WRS2zSj4da4.EK6S",
+      "role": "user",
+      "createdAt": "2026-08-31T19:11:32.472Z"
+    },
+    {
+      "id": "usr-1788263509924-hunqtt",
+      "name": "محمد علي",
+      "email": "01118051964",
+      "phone": "01118051964",
+      "passwordHash": "$2b$10$HvVNu8HQ5ka3.CaXxN9g1eoCSU0Orp7uik5Wh54fdvZ5H.m3cfVum",
+      "role": "user",
+      "createdAt": "2026-09-01T11:51:50.049Z"
+    }
+  ],
+  "categories": [
+    {
+      "_id": "6a959e810c48600d9678f5a5",
+      "id": "detergents",
+      "title": "مستحضرات التجميل والعناية",
+      "subtitle": "سيروم، كريمات، غسول، خلطات تجميلية طبيعية",
+      "iconName": "Sparkles",
+      "iconEmoji": "✨",
+      "color": "from-purple-600 to-pink-600",
+      "bgColor": "bg-purple-900/30",
+      "borderColor": "border-pink-500/40",
+      "isAvailable": true,
+      "badgeText": "متاح للبدء فوراً",
+      "description": "دليل شامل لمنتجات وتركيبات العناية بالبشرة والشعر ومستحضرات التجميل.",
+      "order": 1,
+      "__v": 0
+    },
+    {
+      "_id": "6a96c0505df17d9c0a27bb02",
+      "id": "cat-1788264516153",
+      "title": "العنايه بالبشره",
+      "subtitle": "",
+      "iconName": "Sparkles",
+      "iconEmoji": "💄",
+      "color": "from-purple-600 to-indigo-700",
+      "bgColor": "bg-purple-900/30",
+      "borderColor": "border-purple-500/40",
+      "isAvailable": true,
+      "badgeText": "متاح للبدء",
+      "description": "حافظي ع بشرتك",
+      "order": 2,
+      "__v": 0
+    }
+  ],
+  "videos": [],
+  "products": [],
+  "orders": [
+    {
+      "id": "order-1788177098529",
+      "orderNumber": "#ORD-186309",
+      "title": "صابون سائل عالي الجودة",
+      "type": "خامات أولية",
+      "date": "٣١‏/٨‏/٢٠٢٦",
+      "status": "قيد المراجعة",
+      "price": "50 جنيه",
+      "itemsCount": 1,
+      "description": "الاسم: فاطمه | الهاتف: 01118051964 | العنوان: المنيا ابو قرقاص",
+      "createdAt": "2026-08-31T11:51:50.676Z"
+    }
+  ],
+  "settings": {
+    "appName": "خليكي جميلة",
+    "adminPin": "1234",
+    "lastUpdated": "2026-09-01T12:32:38.840Z"
+  }
+}
