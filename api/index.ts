@@ -19,7 +19,7 @@ import {
   FavoriteModel,
   FavoriteRecord,
   UserRecord
-} from './server/db.ts';
+} from '../server/db.ts';
 import {
   initPushService,
   getVapidPublicKey,
