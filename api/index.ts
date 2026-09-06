@@ -1,16 +1,14 @@
-import app, { initServices } from '../server/app.ts';
-
-// Track serverless container initialization
-let isReady = false;
-
-export default async function handler(req: any, res: any) {
-  if (!isReady) {
-    try {
-      await initServices();
-      isReady = true;
-    } catch (err) {
-      console.error('[Vercel Serverless] Service init warning:', err);
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "includeFiles": [
+    "server/**"
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
     }
-  }
-  return app(req, res);
+  ]
 }
