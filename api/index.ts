@@ -1,8 +1,4 @@
+import app from '../server/app';
 
-const appModule = await import('../server/app.ts');
-
-const app = appModule.default;
-
-export default async function handler(req, res) {
-  return app(req, res);
-}
+export default app;
+export { app, app as handler };
