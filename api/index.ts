@@ -1,4 +1,4 @@
-import app, { initServices } from '../server/app';
+import app, { initServices } from '../server/app.ts';
 
 // Track serverless container initialization
 let isReady = false;
