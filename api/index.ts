@@ -1,4 +1,3 @@
-import app from '../server/app';
+import { app } from '../server/app';
 
 export default app;
-export { app, app as handler };
