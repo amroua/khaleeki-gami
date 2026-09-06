@@ -2347,6 +2347,7 @@ function normalizeOrderStatus(status?: string): string {
   });
 }
 
+export default app;
 startServer().catch((err) => {
   console.error('Failed to start server:', err);
 });
