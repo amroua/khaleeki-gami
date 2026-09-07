@@ -300,6 +300,86 @@ function writeLocalDB(data) {
     console.error("Error writing local DB in pushService:", err);
   }
 }
+async function initPushService() {
+  try {
+    const envPublicKey = process.env.VAPID_PUBLIC_KEY || process.env.VAPID_PUBLIC;
+    const envPrivateKey = process.env.VAPID_PRIVATE_KEY;
+    if (envPublicKey && envPrivateKey) {
+      activeVapidKeys = {
+        publicKey: envPublicKey.trim(),
+        privateKey: envPrivateKey.trim()
+      };
+      console.log("\u2705 VAPID keys loaded from environment variables.");
+    } else {
+      let foundInMongo = false;
+      if (isMongoConnected()) {
+        try {
+          const settings = await SettingsModel.findOne({ key: "main" }).lean().exec();
+          if (settings && settings.vapidPublicKey && settings.vapidPrivateKey) {
+            activeVapidKeys = {
+              publicKey: settings.vapidPublicKey,
+              privateKey: settings.vapidPrivateKey
+            };
+            foundInMongo = true;
+            console.log("\u2705 VAPID keys loaded from MongoDB Atlas.");
+          }
+        } catch (e) {
+          console.warn("Could not read VAPID keys from Mongo:", e);
+        }
+      }
+      if (!foundInMongo) {
+        const local = readLocalDB();
+        if (local.settings?.vapidPublicKey && local.settings?.vapidPrivateKey) {
+          activeVapidKeys = {
+            publicKey: local.settings.vapidPublicKey,
+            privateKey: local.settings.vapidPrivateKey
+          };
+          console.log("\u2705 VAPID keys loaded from local database.");
+        } else {
+          console.log("\u{1F511} Generating new VAPID keys for Android Push Notifications...");
+          const generated = webpush.generateVAPIDKeys();
+          activeVapidKeys = {
+            publicKey: generated.publicKey,
+            privateKey: generated.privateKey
+          };
+          if (isMongoConnected()) {
+            try {
+              await SettingsModel.findOneAndUpdate(
+                { key: "main" },
+                {
+                  $set: {
+                    vapidPublicKey: activeVapidKeys.publicKey,
+                    vapidPrivateKey: activeVapidKeys.privateKey
+                  }
+                },
+                { upsert: true }
+              ).exec();
+            } catch (e) {
+              console.warn("Could not save VAPID keys to Mongo:", e);
+            }
+          }
+          local.settings = local.settings || {};
+          local.settings.vapidPublicKey = activeVapidKeys.publicKey;
+          local.settings.vapidPrivateKey = activeVapidKeys.privateKey;
+          writeLocalDB(local);
+          console.log("\u2705 New VAPID keys generated and persisted permanently.");
+        }
+      }
+    }
+    let contactSubject = process.env.VAPID_SUBJECT?.trim() || "mailto:dedlek456@gmail.com";
+    if (!contactSubject.startsWith("mailto:") && !contactSubject.startsWith("http://") && !contactSubject.startsWith("https://")) {
+      contactSubject = `mailto:${contactSubject}`;
+    }
+    webpush.setVapidDetails(
+      contactSubject,
+      activeVapidKeys.publicKey,
+      activeVapidKeys.privateKey
+    );
+    console.log("\u{1F680} Web Push service initialized successfully for Android & Desktop.");
+  } catch (err) {
+    console.error("\u274C Failed to initialize push service:", err);
+  }
+}
 function getVapidPublicKey() {
   return activeVapidKeys.publicKey;
 }
@@ -943,6 +1023,13 @@ app.use(async (req, res, next) => {
   }
   next();
 });
+var servicesInitialized = false;
+async function initServices() {
+  if (servicesInitialized) return;
+  await connectMongoDB();
+  await initPushService();
+  servicesInitialized = true;
+}
 app.post("/api/auth/login", async (req, res) => {
   try {
     const identifier = (req.body.identifier || req.body.email || req.body.phone || "").toString().trim();
@@ -2540,9 +2627,18 @@ app.get("/api/health", (req, res) => {
 var app_default = app;
 
 // server/vercel.ts
-var vercel_default = app_default;
+var isReady = false;
+async function handler(req, res) {
+  if (!isReady) {
+    try {
+      await initServices();
+      isReady = true;
+    } catch (err) {
+      console.error("[Vercel] Service init error:", err);
+    }
+  }
+  return app_default(req, res);
+}
 export {
-  app_default as app,
-  vercel_default as default,
-  app_default as handler
+  handler as default
 };
